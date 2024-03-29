@@ -105,6 +105,10 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">
                         <button class="buttonDel">Delete</button>
                         </a>
+                    <form method="post" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@item.Id">
+                        <input name="countP" id="ccount" type="number" width="3" value="1" style="color:red; font:bold" /> Броя
+                        <input type="submit" value="Поръчай" />
+                    </form>
                 </div>
                 <div class="presentsText">
                     <br>

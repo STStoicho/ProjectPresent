@@ -26,8 +26,21 @@ namespace ProjectPresents.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Clietns).Include(o => o.Presents);
-            return View(await applicationDbContext.ToListAsync());
+            if (User.IsInRole("Admin"))
+            {
+                var applicationDbContext = _context.Orders
+                                    .Include(o => o.Clietns)
+                                    .Include(o => o.Presents);
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                var applicationDbContext = _context.Orders
+                                    .Include(o => o.Clietns)
+                                    .Include(o => o.Presents)
+                                    .Where(x => x.ClientId == _userManager.GetUserId(User));
+                return View(await applicationDbContext.ToListAsync());
+            }
         }
 
         // GET: Orders/Details/5
@@ -55,6 +68,20 @@ namespace ProjectPresents.Controllers
         {
             ViewData["PresentsId"] = new SelectList(_context.Presents, "Id", "Name");
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateWithPresentId(int presentId, int countP)
+        {
+            //int c = int.Parse( ViewBag.counter);
+            //return View();
+            Order order = new Order();
+            order.PresentsId = presentId;
+            order.Quantity = countP;
+            order.ClientId = _userManager.GetUserId(User);
+            order.DateUpdate = DateTime.Now;
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Orders/Create
