@@ -69,11 +69,11 @@ namespace ProjectPresents.Controllers
             ViewData["PresentsId"] = new SelectList(_context.Presents, "Id", "Name");
             return View();
         }
-        [HttpPost]
         public async Task<IActionResult> CreateWithPresentId(int presentId, int countP)
         {
             //int c = int.Parse( ViewBag.counter);
             //return View();
+            var currentPresent = await _context.Presents.FirstOrDefaultAsync(z => z.Id == presentId);
             Order order = new Order();
             order.PresentsId = presentId;
             order.Quantity = countP;
@@ -89,7 +89,7 @@ namespace ProjectPresents.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PresentsId,Quantity,DateUpdate")] Order order)
+        public async Task<IActionResult> Create([Bind("PresentsId,Quantity")] Order order)
         {
             order.DateUpdate = DateTime.Now;
 

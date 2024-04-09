@@ -152,9 +152,10 @@
                     <br>
                     <b>Каталогов номер: </b> @Html.DisplayFor(modelItem => item.CatalogNum)
                     <div style="float: right">
-                        <form method="post" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@item.Id">
+                        <form method="get" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@item.Id">
                             Броя:
                             <br>
+                            <input name="presentId" type="hidden" value="@item.Id" />
                             <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
                             <input type="submit" value="Поръчай" />
                         </form>
