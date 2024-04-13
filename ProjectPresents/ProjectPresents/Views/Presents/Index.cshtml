@@ -29,6 +29,7 @@
         height: 80px;
         border-radius: 8px;
         background-color: lightskyblue;
+        transition: all 0.2s ease-out;
     }
     .buttonEdit:hover
     {
@@ -42,6 +43,7 @@
         height: 80px;
         border-radius: 8px;
         background-color: lightskyblue;
+        transition: all 0.2s ease-out;
     }
     .buttonDetAdmin:hover {
         background-color: deepskyblue;
@@ -55,6 +57,7 @@
         border-radius: 8px;
         background-color: lightskyblue;
         margin-top: 90px;
+        transition: all 0.2s ease-out;
     }
     .buttonDet:hover {
         background-color: deepskyblue;
@@ -70,6 +73,7 @@
         height: 80px;
         border-radius: 8px;
         background-color: red;
+        transition: all 0.2s ease-out;
     }
     .buttonDel:hover
     {
@@ -82,6 +86,7 @@
         width: 130px;
         height: 55px;
         border-radius: 8px;
+        transition: all 0.2s ease-out;
     }
     #buttonCreate:hover
     {
@@ -91,6 +96,25 @@
     #ccount
     {
         width: 150px;
+    }
+    #image
+    {
+        margin: 15px;
+        float: left;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 240px; 
+        height: 235px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+    #image:hover
+    {
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+        box-shadow: 4px 4px 12px 1px;
+        width: 250px;
+        height: 245px;
     }
 
 </style>
@@ -112,7 +136,9 @@
     <div class="presents">
         <tr>
             <td>
-                <img style="margin: 15px; float: left; border-radius: 8px; box-shadow: 3px 3px 3px 1px" src="@Html.DisplayFor(modelItem => item.Image)" width="240", height="235" />
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img id="image" src="@Html.DisplayFor(modelItem => item.Image)" width="240" , height="235" />
+                </a>
             </td>
             <td>
                 <div class="buttons">
