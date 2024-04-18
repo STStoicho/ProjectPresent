@@ -5,18 +5,24 @@
 }
 
 <style>
-
+    body
+    {
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,182,182,1) 100%);
+    }
     .presents
     {
         background-color: #F96F6F;
         border-radius: 12px;
         font-size: 18px;
         font-family:'Comic Sans MS';
+        box-shadow: 3px 3px 3px 1px;
     }
     .presentsText
     {
         margin-left: 290px;
         width: 700px;
+        font-size: 22px;
     }
     .buttons
     {
@@ -93,9 +99,22 @@
         transition: all 0.2s ease-out;
         background-color: lightgray;
     }
+    #buttonOrder
+    {
+        width: 130px;
+        height: 55px;
+        border-radius: 8px;
+        transition: all 0.2s ease-out;
+    }
+    #buttonOrder:hover 
+    {
+        transition: all 0.2s ease-out;
+        background-color: lightgray;
+    }
     #ccount
     {
         width: 150px;
+        border-radius: 8px;
     }
     #image
     {
@@ -119,12 +138,13 @@
 
 </style>
 
+<br>
 <h1 style="text-align: center">Подаръци</h1>
 
 @if (User.IsInRole("Admin"))
 {
     <a asp-action="Create">
-        <button id="buttonCreate">Create New</button>
+        <button id="buttonCreate">Създай нов</button>
     </a>
 }
     
@@ -145,7 +165,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">
-                            <button class="buttonEdit">Edit</button>
+                            <button class="buttonEdit">Промени</button>
                         </a>
                     }
                     @if (User.IsInRole("Admin"))
@@ -155,20 +175,20 @@
                     @if (!User.IsInRole("Admin"))
                     {
                         <a asp-action="Details" asp-route-id="@item.Id">
-                            <button class="buttonDet">Details</button>
+                            <button class="buttonDet">Детайли</button>
                         </a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Details" asp-route-id="@item.Id">
-                            <button class="buttonDetAdmin">Details</button>
+                            <button class="buttonDetAdmin">Детайли</button>
                         </a>
                     }
                     <br>
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Delete" asp-route-id="@item.Id">
-                            <button class="buttonDel">Delete</button>
+                            <button class="buttonDel">Премахни</button>
                         </a>
                     }
                 </div>
@@ -183,7 +203,7 @@
                             <br>
                             <input name="presentId" type="hidden" value="@item.Id" />
                             <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
-                            <input type="submit" value="Поръчай" />
+                            <input id="buttonOrder" type="submit" value="Поръчай" />
                         </form>
                     </div>
                     <br>
@@ -192,8 +212,6 @@
                     <b>Приложение: </b> @Html.DisplayFor(modelItem => item.Aplieds.Name)
                     <br>
                     <b>Цена: </b> @Html.DisplayFor(modelItem => item.Price) лв.
-                    <br>
-                    <b>Дата: </b> @Html.DisplayFor(modelItem => item.DateUpdate)
                 </div>
             </td>
         </tr>

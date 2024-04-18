@@ -4,15 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
+<br>
 <h1 style="text-align: center">Пазарска кошница</h1>
 
 <style>
+    body
+    {
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(151,232,255,1) 100%);
+    }
     .presents 
     {
         background-color: #46B6E0;
         border-radius: 12px;
         font-size: 18px;
         font-family: 'Comic Sans MS';
+        box-shadow: 3px 3px 3px 1px;
     }
     #image {
         margin: 15px;
@@ -63,7 +70,7 @@
 @if (User.IsInRole("Admin"))
 {
     <a asp-action="Create">
-        <button id="buttonCreate">Create New</button>
+        <button id="buttonCreate">Създай нов</button>
     </a>
 }
 
@@ -78,7 +85,7 @@
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@item.Id">
-                    <button class="buttonDel">Delete</button>
+                    <button class="buttonDel">Премахни</button>
                 </a>
                 <br>
                 <br>
