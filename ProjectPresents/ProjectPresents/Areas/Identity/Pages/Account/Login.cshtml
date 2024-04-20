@@ -2,35 +2,58 @@
 @model LoginModel
 
 <style>
+    #image
+    {
+        position: absolute;
+        z-index: -5;
+        -webkit-filter: blur(4px);
+        width: 99%;
+        height: 100%;
+    }
     .row
     {
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 500px;
+        background-color: rgba(255, 255, 255, 0.7);
+        margin-left: 700px;
     }
-
     #Logintext {
         text-align: center;
     }
+    .col-md-4
+    {
+        width: 400px;
+    }
+    .container
+    {
+        margin-left: 0px;
+    }
 </style>
 
+<img id="image" src="https://cdn.pixabay.com/photo/2018/08/06/10/22/gift-3587240_1280.jpg"/>
+
 <br>
 <br>
-
-<div id="Logintext">
-    @{
-        ViewData["Title"] = "Log in";
-    }
-
-    <h1>@ViewData["Title"]</h1>
-    <br>
-</div>
+<br>
+<br>
+<br>
 
 <div class="row">
+    <br>
+    <div id="Logintext">
+        @{
+            ViewData["Title"] = "Вход";
+        }
+
+        <h1>@ViewData["Title"]</h1>
+        <br>
+    </div>
     <div class="col-md-4">
-        <section>
             <form id="account" method="post">
-                <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
@@ -39,30 +62,30 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <label asp-for="Input.Password" class="form-label">Парола</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="checkbox mb-3">
                     <label asp-for="Input.RememberMe" class="form-label">
                         <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        Запомни ме?
                     </label>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Забравена парола?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Регистрация</a>
                     </p>
                 </div>
                 <br>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Вход</button>
                 </div>
             </form>
-        </section>
     </div>
+    <br>
 </div>
 
 @section Scripts {
