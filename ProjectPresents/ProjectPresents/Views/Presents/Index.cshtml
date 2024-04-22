@@ -17,17 +17,55 @@
         font-size: 18px;
         font-family:'Comic Sans MS';
         box-shadow: 3px 3px 3px 1px;
+        display: flex;
+        flex-direction: row;
+        height: 280px;
     }
+
+    @@media screen and (max-width: 990px) 
+    {
+        .presents 
+        {
+            height: 580px;
+            width: 600px;
+        }
+    }
+
     .presentsText
     {
-        margin-left: 290px;
-        width: 700px;
+        margin-left: 15px;
+        width: 450px;
         font-size: 22px;
     }
-    .buttons
+
+    @@media screen and (max-width: 1195px) 
     {
-        float: right;
+        .presentsText {
+            margin-left: 15px;
+            width: 450px;
+            font-size: 22px;
+        }
     }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        .presentsText
+        {
+        margin-left: 15px;
+        width: 300px;
+        font-size: 18px;
+        }
+    }
+
+    @@media screen and (max-width: 974px) 
+    {
+        .presentsText {
+            margin-left: 15px;
+            width: 300px;
+            font-size: 18px;
+        }
+    }
+
     .buttonEdit
     {
         margin: 6px;
@@ -135,7 +173,36 @@
         width: 250px;
         height: 245px;
     }
+    #Order 
+    {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
 
+    @@media screen and (max-width: 990px) 
+    {
+        #Order 
+        {
+            position: absolute;
+            margin-left: 45px;
+            margin-top: 350px;
+        }
+    }
+
+    #buttons
+    {
+    }
+
+    @@media screen and (max-width: 990px) 
+    {
+        #buttons 
+        {
+            position: absolute;
+            margin-left: 400px;
+            margin-top: 280px;
+        }
+    }
 </style>
 
 <br>
@@ -154,67 +221,65 @@
 
 @foreach (var item in Model) {
     <div class="presents">
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">
-                    <img id="image" src="@Html.DisplayFor(modelItem => item.Image)" width="240" , height="235" />
+        <div>
+            <a asp-action="Details" asp-route-id="@item.Id">
+                <img id="image" src="@Html.DisplayFor(modelItem => item.Image)" width="240" , height="235" />
+            </a>
+        </div>
+        <div>
+            <div class="presentsText">
+                <br>
+                <b style="text-align: end; font-size: 40px">@Html.DisplayFor(modelItem => item.Name)</b>
+                <br>
+                <b>Каталогов номер: </b> @Html.DisplayFor(modelItem => item.CatalogNum)
+                <br>
+                <b>Категория: </b> @Html.DisplayFor(modelItem => item.Categories.Name)
+                <br>
+                <b>Приложение: </b> @Html.DisplayFor(modelItem => item.Aplieds.Name)
+                <br>
+                <b>Цена: </b> @Html.DisplayFor(modelItem => item.Price) лв.
+            </div>
+        </div>
+        <div id="Order">
+                <form method="get" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@item.Id">
+                    Броя:
+                    <br>
+                    <input name="presentId" type="hidden" value="@item.Id" />
+                    <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
+                    <input id="buttonOrder" type="submit" value="Поръчай" />
+                </form>
+        </div>
+        <div id="buttons">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@item.Id">
+                    <button class="buttonEdit">Промени</button>
                 </a>
-            </td>
-            <td>
-                <div class="buttons">
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">
-                            <button class="buttonEdit">Промени</button>
-                        </a>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <br>
-                    }
-                    @if (!User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Details" asp-route-id="@item.Id">
-                            <button class="buttonDet">Детайли</button>
-                        </a>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Details" asp-route-id="@item.Id">
-                            <button class="buttonDetAdmin">Детайли</button>
-                        </a>
-                    }
-                    <br>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">
-                            <button class="buttonDel">Премахни</button>
-                        </a>
-                    }
-                </div>
-                <div class="presentsText">
-                    <br>
-                    <b style="text-align: end; font-size: 40px">@Html.DisplayFor(modelItem => item.Name)</b>
-                    <br>
-                    <b>Каталогов номер: </b> @Html.DisplayFor(modelItem => item.CatalogNum)
-                    <div style="float: right">
-                        <form method="get" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@item.Id">
-                            Броя:
-                            <br>
-                            <input name="presentId" type="hidden" value="@item.Id" />
-                            <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
-                            <input id="buttonOrder" type="submit" value="Поръчай" />
-                        </form>
-                    </div>
-                    <br>
-                    <b>Категория: </b> @Html.DisplayFor(modelItem => item.Categories.Name)
-                    <br>
-                    <b>Приложение: </b> @Html.DisplayFor(modelItem => item.Aplieds.Name)
-                    <br>
-                    <b>Цена: </b> @Html.DisplayFor(modelItem => item.Price) лв.
-                </div>
-            </td>
-        </tr>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <br>
+            }
+            @if (!User.IsInRole("Admin"))
+            {
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <button class="buttonDet">Детайли</button>
+                </a>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <button class="buttonDetAdmin">Детайли</button>
+                </a>
+            }
+            <br>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Delete" asp-route-id="@item.Id">
+                    <button class="buttonDel">Премахни</button>
+                </a>
+            }
+        </div>
         <br>
         <br>
     </div>

@@ -17,19 +17,44 @@
     #image 
     {
         margin: 15px;
-        float: left;
         border-radius: 8px;
         box-shadow: 3px 3px 3px 1px;
         width: 440px;
         height: 435px;
         color: black;
     }
+
+    @@media screen and (max-width: 770px) 
+    {
+        #image {
+            width: 540px;
+            height: 535px;
+        }
+    }
     .presentText 
     {
-        margin-left: 500px;
         font-size: 27px;
         font-family: 'Comic Sans MS';
+        margin-top: 50px;
+        margin-left: 15px;
+        width: 500px;
     }
+
+    @@media screen and (max-width: 973px) 
+    {
+        .presentText {
+            font-size: 22px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        .presentText 
+        {
+            margin-top: 5px;
+        }
+    }
+
     .buttonEdit 
     {
         width: 180px;
@@ -62,6 +87,22 @@
         color: white;
         transition: all 0.2s ease-out;
     }
+    .buttonDel 
+    {
+        width: 180px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: red;
+        margin-left: 15px;
+        transition: all 0.2s ease-out;
+        font-family: 'Comic Sans MS';
+    }
+    .buttonDel:hover 
+    {
+        transition: all 0.2s ease-out;
+        color: white;
+        background-color: #CE0000;
+    }
     #ccount 
     {
         width: 200px;
@@ -81,43 +122,87 @@
         transition: all 0.2s ease-out;
         background-color: lightgray;
     }
+    #Order
+    {
+        margin-left: 250px;
+        font-size: 22px;
+    }
+
+    @@media screen and (max-width: 1150px) 
+    {
+        #Order {
+            margin-left: 150px;
+        }
+    }
+
+    #everything
+    {
+        display: flex;
+        flex-direction: row;
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        #everything 
+        {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 </style>
 
 <div>
-    <img id="image" src="@Html.DisplayFor(model => model.Image)" />
-    <br>
-    <br>
-    <div class="presentText">
-        <b>Име: </b>@Html.DisplayFor(model => model.Name)
-        <br>
-        <b>Каталожен номер: </b>@Html.DisplayFor(model => model.CatalogNum)
-        <br>
-        <b>Категория: </b>@Html.DisplayFor(model => model.Categories.Name)
-        <br>
-        <b>Приложение: </b>@Html.DisplayFor(model => model.Aplieds.Name)
-        <br>
-        <b>Описание: </b>@Html.DisplayFor(model => model.Description)
-        <br>
-        <b>Цена: </b>@Html.DisplayFor(model => model.Price)
-        <br>
-        <b>Дата: </b>@Html.DisplayFor(model => model.DateUpdate)
+    <div>
+        <img id="image" src="@Html.DisplayFor(model => model.Image)" />
+    </div>
+    <div>
+        <div class="presentText">
+            <b>Име: </b>@Html.DisplayFor(model => model.Name)
+            <br>
+            <b>Каталожен номер: </b>@Html.DisplayFor(model => model.CatalogNum)
+            <br>
+            <b>Категория: </b>@Html.DisplayFor(model => model.Categories.Name)
+            <br>
+            <b>Приложение: </b>@Html.DisplayFor(model => model.Aplieds.Name)
+            <br>
+            <b>Описание: </b>@Html.DisplayFor(model => model.Description)
+            <br>
+            <b>Цена: </b>@Html.DisplayFor(model => model.Price)
+            <br>
+            <b>Дата: </b>@Html.DisplayFor(model => model.DateUpdate)
+        </div>
     </div>
 </div>
-<div style="float:left">
-    <a asp-action="Index">
-        <button class="buttonBack">Предишна страница</button>
-    </a>
-    <form style="margin-left: 500px; font-size: 22px; float: right" method="get" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@Model?.Id">
-        <b style="font-family:'Comic Sans MS'">Броя:</b>
-        <br>
-        <input name="presentId" type="hidden" value="@Model?.Id" />
-        <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
-        <input id="buttonOrder" type="submit" value="Поръчай" />
-    </form>
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-action="Edit" asp-route-id="@Model?.Id">
-            <button class="buttonEdit">Промени</button>
+
+<div style="display: flex; flex-direction:row">
+    <div>
+        <a asp-action="Index">
+            <button class="buttonBack">Предишна страница</button>
         </a>
-    }
+    </div>
+    <div>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model?.Id">
+                <button class="buttonEdit">Промени</button>
+            </a>
+        }
+    </div>
+    <div>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Delete" asp-route-id="@Model?.Id">
+                <button class="buttonDel">Премахни</button>
+            </a>
+        }
+    </div>
+    <div id="Order">
+        <form method="get" asp-controller="Orders" asp-action="CreateWithPresentId" asp-route-presentId="@Model?.Id">
+            <b style="font-family:'Comic Sans MS'">Броя:</b>
+            <br>
+            <input name="presentId" type="hidden" value="@Model?.Id" />
+            <input name="countP" id="ccount" type="number" value="1" style="color:black; font:bold" />
+            <input id="buttonOrder" type="submit" value="Поръчай" />
+        </form>
+    </div>
 </div>
