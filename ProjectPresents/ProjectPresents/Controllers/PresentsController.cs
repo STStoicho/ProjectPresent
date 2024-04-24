@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ProjectPresents.Data;
 
 namespace ProjectPresents.Controllers
@@ -19,10 +20,19 @@ namespace ProjectPresents.Controllers
         }
 
         // GET: Presents
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Presents.Include(p => p.Aplieds).Include(p => p.Categories);
-            return View(await applicationDbContext.ToListAsync());
+            var applicationDbContext = await _context.Presents
+                .Include(p => p.Aplieds)
+                .Include(p => p.Categories).ToListAsync();
+
+            if (!searchString.IsNullOrEmpty())
+            {
+                applicationDbContext = applicationDbContext.Where(x => x.Name.Contains(searchString)).ToList();
+                ViewData["Search"] = searchString;
+            }
+
+            return View(applicationDbContext);
         }
 
         // GET: Presents/Details/5

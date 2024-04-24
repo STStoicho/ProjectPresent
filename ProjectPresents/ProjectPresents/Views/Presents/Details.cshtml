@@ -5,14 +5,14 @@
 }
 
 <br>
-<h1 style="text-align: center">Детайли на "@Html.DisplayFor(model => model.Name)"</h1>
+<h1 style="text-align: center">Детайли на подаръка</h1>
 <br>
 
 <style>
     body
     {
-        background: rgb(151,232,255);
         background: radial-gradient(circle, rgba(255,107,110,1) 50%, rgba(255,182,182,1) 100%);
+        font-family: 'Comic Sans MS';
     }
     #image 
     {
@@ -34,16 +34,23 @@
     .presentText 
     {
         font-size: 27px;
-        font-family: 'Comic Sans MS';
         margin-top: 50px;
         margin-left: 15px;
-        width: 500px;
+        width: 800px;
     }
 
-    @@media screen and (max-width: 973px) 
+    @@media screen and (max-width: 1200px) 
     {
         .presentText {
             font-size: 22px;
+        }
+    }
+
+    @@media screen and (max-width: 1100px) 
+    {
+        .presentText 
+        {
+            width: 300px;
         }
     }
 
@@ -63,7 +70,6 @@
         border-radius: 8px;
         background-color: lightskyblue;
         transition: all 0.2s ease-out;
-        font-family: 'Comic Sans MS';
         font-size: 20px;
     }
     .buttonEdit:hover 
@@ -80,7 +86,6 @@
         border-radius: 8px;
         background-color: lightskyblue;
         transition: all 0.2s ease-out;
-        font-family: 'Comic Sans MS';
     }
     .buttonBack:hover {
         background-color: deepskyblue;
@@ -95,7 +100,7 @@
         background-color: red;
         margin-left: 15px;
         transition: all 0.2s ease-out;
-        font-family: 'Comic Sans MS';
+        font-size: 20px;
     }
     .buttonDel:hover 
     {
@@ -107,7 +112,6 @@
     {
         width: 200px;
         border-radius: 8px;
-        font-family: 'Comic Sans MS';
     }
     #buttonOrder 
     {
@@ -115,7 +119,6 @@
         height: 55px;
         border-radius: 8px;
         transition: all 0.2s ease-out;
-        font-family: 'Comic Sans MS';
     }
     #buttonOrder:hover 
     {
@@ -130,8 +133,27 @@
 
     @@media screen and (max-width: 1150px) 
     {
-        #Order {
+        #Order 
+        {
             margin-left: 150px;
+        }
+    }
+
+    @@media screen and (max-width: 980px) 
+    {
+        #Order 
+        {
+            margin-left: 10px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        #Order 
+        {
+            position: absolute;
+            margin-top: 80px;
+            margin-left: 130px;
         }
     }
 
@@ -151,7 +173,7 @@
     }
 </style>
 
-<div>
+<div id="everything">
     <div>
         <img id="image" src="@Html.DisplayFor(model => model.Image)" />
     </div>
@@ -167,14 +189,14 @@
             <br>
             <b>Описание: </b>@Html.DisplayFor(model => model.Description)
             <br>
-            <b>Цена: </b>@Html.DisplayFor(model => model.Price)
+            <b>Цена: </b>@Html.DisplayFor(model => model.Price) лв.
             <br>
             <b>Дата: </b>@Html.DisplayFor(model => model.DateUpdate)
         </div>
     </div>
 </div>
-
-<div style="display: flex; flex-direction:row">
+<br>
+<div style="display: flex; flex-direction:row; justify-content: space-between">
     <div>
         <a asp-action="Index">
             <button class="buttonBack">Предишна страница</button>
@@ -206,3 +228,7 @@
         </form>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>

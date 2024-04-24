@@ -10,15 +10,14 @@
 <style>
     body
     {
-        background: rgb(255,255,255);
         background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(151,232,255,1) 100%);
+        font-family: 'Comic Sans MS';
     }
     .presents 
     {
         background-color: #46B6E0;
         border-radius: 12px;
         font-size: 18px;
-        font-family: 'Comic Sans MS';
         box-shadow: 3px 3px 3px 1px;
     }
     #image {
@@ -53,26 +52,7 @@
         float: left;
         font-size: 18px;
     }
-    #buttonCreate 
-    {
-        width: 130px;
-        height: 55px;
-        border-radius: 8px;
-        transition: all 0.2s ease-out;
-    }
-    #buttonCreate:hover 
-    {
-        transition: all 0.2s ease-out;
-        background-color: lightgray;
-    }
 </style>
-
-@if (User.IsInRole("Admin"))
-{
-    <a asp-action="Create">
-        <button id="buttonCreate">Създай нов</button>
-    </a>
-}
 
 <br>
 <br>

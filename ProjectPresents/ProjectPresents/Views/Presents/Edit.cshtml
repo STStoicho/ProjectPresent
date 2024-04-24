@@ -4,60 +4,113 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    body 
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(255,107,110,1) 100%);
+        font-family: 'Comic Sans MS';
+    }
 
-<h4>Present</h4>
-<hr />
+    .row 
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-control 
+    {
+        border-radius: 6px;
+    }
+
+    .buttonBack 
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonBack:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+
+    .buttonEdit
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+        margin-left: 45px;
+    }
+    
+    .buttonEdit:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">Промяна на подарък</h1>
+<br>
+<br>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="CatalogNum" class="control-label"></label>
+                <label asp-for="CatalogNum" class="control-label">Каталожен номер</label>
                 <input asp-for="CatalogNum" class="form-control" />
                 <span asp-validation-for="CatalogNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Име</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoriesId" class="control-label"></label>
+                <label asp-for="CategoriesId" class="control-label">Категория</label>
                 <select asp-for="CategoriesId" class="form-control" asp-items="ViewBag.CategoriesId"></select>
                 <span asp-validation-for="CategoriesId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApliedsId" class="control-label"></label>
+                <label asp-for="ApliedsId" class="control-label">Приложение</label>
                 <select asp-for="ApliedsId" class="form-control" asp-items="ViewBag.ApliedsId"></select>
                 <span asp-validation-for="ApliedsId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Описание</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label">Снимка</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">Цена</label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
+                <input type="submit" value="Промени" class="buttonEdit" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<br>
+<br>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
