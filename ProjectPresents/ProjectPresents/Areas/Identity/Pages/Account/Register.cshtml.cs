@@ -59,11 +59,11 @@ namespace ProjectPresents.Areas.Identity.Pages.Account
         
         public class InputModel
         {
-            [Required(ErrorMessage = "Това поле е задължително!")]
+            [Required(ErrorMessage = "Името е задължително!")]
             [Display(Name = "FirstName")]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Това поле е задължително!")]
+            [Required(ErrorMessage = "Фамилията е задължителна!")]
             [Display(Name = "LastName")]
             public string LastName { get; set; }
 
@@ -71,14 +71,14 @@ namespace ProjectPresents.Areas.Identity.Pages.Account
             [Display(Name = "UserName")]
             public string UserName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Това поле е задължително!")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Паролата е задължителна!")]
+            [StringLength(100, ErrorMessage = "Паролата трябва да е дълга поне 6 знака", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }

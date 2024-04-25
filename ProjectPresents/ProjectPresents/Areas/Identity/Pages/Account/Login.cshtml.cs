@@ -45,11 +45,11 @@ namespace ProjectPresents.Areas.Identity.Pages.Account
         public class InputModel
         {
             
-            [Required]
+            [Required(ErrorMessage = "Това поле е задължително!")]
             public string UserName { get; set; }
 
             
-            [Required]
+            [Required(ErrorMessage = "Паролата е задължителна!")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

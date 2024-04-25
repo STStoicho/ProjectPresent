@@ -7,6 +7,7 @@
         background-image: url(https://cdn.pixabay.com/photo/2018/08/06/10/22/gift-3587240_1280.jpg);
         background-repeat: no-repeat;
         background-size: cover;
+        font-family: 'Comic Sans MS';
     }
     #image {
         position: absolute;
@@ -23,7 +24,6 @@
         border-radius: 8px;
         box-shadow: 3px 3px 3px 1px;
         width: 460px;
-        height: 660px;
         background-color: rgba(255, 255, 255, 0.7);
         margin-left: auto;
         margin-right: auto;
@@ -76,12 +76,12 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" type="password" aria-required="true" placeholder="password" />
                 <label asp-for="Input.Password">Парола</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" type="password" aria-required="true" placeholder="password" />
                 <label asp-for="Input.ConfirmPassword">Потвърди паролата</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
@@ -92,6 +92,7 @@
             </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Регистрация</button>
         </form>
+        <br>
     </div>
 </div>
 <br>

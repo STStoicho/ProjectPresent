@@ -3,18 +3,33 @@
 @inject SignInManager<Client> SignInManager
 @inject UserManager<Client> UserManager
 
+<style>
+    .search
+    {
+        background-color: #F96F6F;
+        border-radius: 8px;
+        width: 150px;
+        transition: all 0.2s ease-out;
+    }
+    .search:hover
+    {
+        background-color: #FA3C3C;
+        transition: all 0.2s ease-out;
+    }
+</style>
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
         <form class="d-flex" asp-controller="Presents" asp-action="Index" asp-route-searchString="">
             <input class="form-control me-sm-2" type="search" placeholder="Подарък ..." value="@ViewBag.Search" name="searchString" />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Търси</button>
+            <button class="search" type="submit">Търси</button>
         </form>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"><img src="~/shoppingcart.png" width="30px" /></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Здравейте, @User.Identity?.Name!</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -26,7 +41,7 @@
     {
         <form class="d-flex" asp-controller="Presents" asp-action="Index" asp-route-searchString="">
             <input class="form-control me-sm-2" type="search" placeholder="Подарък ..." value="@ViewBag.Search" name="searchString"/>
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Търси</button>
+            <button class="search" type="submit">Търси</button>
         </form>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"><img src="~/shoppingcart.png" width="30px" /></a>

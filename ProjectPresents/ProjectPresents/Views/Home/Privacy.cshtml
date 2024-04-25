@@ -1,6 +1,78 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Обратна връзка";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<style>
+    body
+    {
+        background: url(https://w0.peakpx.com/wallpaper/712/640/HD-wallpaper-christmas-background-green-tree-gifts-white-boards-white-wooden-background-new-year.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Comic Sans MS';
+    }
+    #everything
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 460px;
+        background-color: rgba(255, 255, 255, 0.8);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #desc
+    {
+        width: 400px;
+        height: 150px;
+    }
+    #btn
+    {
+        width: 180px;
+    }
+</style>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="everything">
+    <br>
+    <div>
+        <h1 style="text-align: center">@ViewData["Title"]</h1>
+    </div>
+    <br>
+    <br>
+    <div>
+        <form>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="name" />
+                <label class="form-label">Име</label>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="phone" />
+                <label class="form-label">Телефон</label>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea style="resize: none" id="desc" class="form-control" name="problem"></textarea>
+                <label class="form-label">Проблемът</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div style="display: flex; justify-content: space-around">
+                <button id="btn" class="btn btn-lg btn-danger" type="reset">Изчисти</button>
+                <button id="btn" class="btn btn-lg btn-primary" type="submit">Изпрати</button>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+<br>
+<br>
+
+
+
