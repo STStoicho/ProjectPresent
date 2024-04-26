@@ -45,7 +45,6 @@
         border-radius: 8px;
         background-color: lightskyblue;
         transition: all 0.2s ease-out;
-        margin-left: 45px;
     }
     
     .buttonEdit:hover 
@@ -102,7 +101,7 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <br>
-            <div class="form-group">
+            <div style="display: flex; justify-content: space-between">
                 <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
                 <input type="submit" value="Промени" class="buttonEdit" />
             </div>

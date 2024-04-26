@@ -20,7 +20,7 @@ namespace ProjectPresents.Controllers
         }
 
         // GET: Presents
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, int? category)
         {
             var applicationDbContext = await _context.Presents
                 .Include(p => p.Aplieds)
@@ -30,6 +30,10 @@ namespace ProjectPresents.Controllers
             {
                 applicationDbContext = applicationDbContext.Where(x => x.Name.Contains(searchString)).ToList();
                 ViewData["Search"] = searchString;
+            }
+            if (category != null)
+            {
+                applicationDbContext = applicationDbContext.Where(x => x.CategoriesId == category).ToList();
             }
 
             return View(applicationDbContext);

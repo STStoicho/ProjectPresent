@@ -12,10 +12,58 @@
     }
     .presentText 
     {
-        font-size: 24px;
-        margin-top: 35px;
+        font-size: 27px;
+        margin-top: 50px;
         margin-left: 35px;
         width: 400px;
+    }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        .presentText 
+        {
+            font-size: 22px;
+        }
+    }
+
+    @@media screen and (max-width: 1100px) 
+    {
+        .presentText 
+        {
+            width: 300px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        .presentText 
+        {
+            margin-top: 25px;
+        }
+    }
+
+    .presentTextDesc {
+        font-size: 27px;
+        margin-top: 25px;
+        justify-content: center;
+        display: flex;
+        width: 1300px;
+    }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        .presentTextDesc 
+        {
+            width: 1000px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        .presentTextDesc 
+        {
+            width: 500px;
+        }
     }
 
     .everything
@@ -23,6 +71,15 @@
         display: flex;
         flex-direction: row;
         align-self: center;
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        .everything 
+        {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     #image 
@@ -33,6 +90,24 @@
         width: 400px;
         height: 400px;
         color: black;
+    }
+
+    @@media screen and (max-width: 980px) 
+    {
+        #image 
+        {
+            margin-left: 0px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        #image 
+        {
+            width: 540px;
+            margin-left: 0px;
+            height: 535px;
+        }
     }
 
     .buttonBack 
@@ -85,14 +160,15 @@
         <br>
         <b>Приложение: </b>@Html.DisplayFor(model => model.Aplieds.Name)
         <br>
-        <b>Описание: </b>@Html.DisplayFor(model => model.Description)
-        <br>
         <b>Цена: </b>@Html.DisplayFor(model => model.Price) лв.
         <br>
         <b>Дата: </b>@Html.DisplayFor(model => model.DateUpdate)
     </div>
 </div>
-<br>
+<div class="presentTextDesc">
+    @Html.DisplayFor(model => model.Description)
+</div>
+
 <br>
 <div style="display: flex; flex-direction: row; justify-content: space-evenly; ">
     <div>

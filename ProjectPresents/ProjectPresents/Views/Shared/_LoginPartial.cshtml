@@ -16,6 +16,17 @@
         background-color: #FA3C3C;
         transition: all 0.2s ease-out;
     }
+
+    .menubox {
+        background-color: white;
+        transition: all 0.1s ease-out;
+        border-radius: 4px;
+    }
+
+    .menubox:hover {
+        background-color: lightgray;
+        transition: all 0.1s ease-out;
+    }
 </style>
 
 <ul class="navbar-nav">
@@ -25,13 +36,13 @@
             <input class="form-control me-sm-2" type="search" placeholder="Подарък ..." value="@ViewBag.Search" name="searchString" />
             <button class="search" type="submit">Търси</button>
         </form>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"><img src="~/shoppingcart.png" width="30px" /></a>
+        <li class="menubox">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"><img src="~/shoppingcart.png" width="30px"/></a>
         </li>
-        <li class="nav-item">
+        <li class="menubox">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
         </li>
-        <li class="nav-item">
+        <li class="menubox">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Изход</button>
             </form>
@@ -43,13 +54,13 @@
             <input class="form-control me-sm-2" type="search" placeholder="Подарък ..." value="@ViewBag.Search" name="searchString"/>
             <button class="search" type="submit">Търси</button>
         </form>
-        <li class="nav-item">
+        <li class="menubox">
             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"><img src="~/shoppingcart.png" width="30px" /></a>
         </li>
-        <li class="nav-item">
+        <li class="menubox">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
         </li>
-        <li class="nav-item">
+        <li class="menubox">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
         </li>
     }
