@@ -36,6 +36,25 @@
     .col-md-4 {
         width: 400px;
     }
+    .links
+    {
+        text-decoration: none;
+    }
+    .buttonregister
+    {
+        width: 380px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: deepskyblue;
+        transition: all 0.2s ease-out;
+        font-size: 20px;
+    }
+    .buttonregister:hover 
+    {
+        background-color: dodgerblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
 </style>
 
 <br>
@@ -88,10 +107,11 @@
             </div>
             <div>
                 <p>
-                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Вече регистриран?</a>
+                    <a asp-page="./Login" class="links" asp-route-returnUrl="@Model.ReturnUrl">Вече регистриран?</a>
                 </p>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Регистрация</button>
+            <br>
+            <button id="registerSubmit" type="submit" class="buttonregister">Регистрация</button>
         </form>
         <br>
     </div>

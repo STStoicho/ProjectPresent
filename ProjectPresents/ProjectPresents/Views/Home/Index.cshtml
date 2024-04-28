@@ -2,6 +2,85 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<style>
+    body
+    {
+        font-family: 'Comic Sans MS';
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, #FFCE9A 100%);
+    }
+    .image 
+    {
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 560px;
+        height: 435px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+    .imageUs
+    {
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 700px;
+        height: 535px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+    .text
+    {
+        font-size: 24px;
+    }
+    .button
+    {
+        width: 180px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: darkorange;
+        transition: all 0.2s ease-out;
+    }
+    .button:hover 
+    {
+        background-color: orange;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">Добре дошли в магазина за подаръци "Изненада"</h1>
+<br>
+<br>
+<div style="display: flex; flex-direction: row; justify-content: space-evenly">
+    <div>
+        <img src="~/image1.png" class="image" />
+    </div>
+    <div>
+        <img src="~/image2.jpg" class="image" />
+    </div>
+</div>
+<br>
+<div style="text-align: center" class="text">
+    Разгледайте нашия магазин и се потопете в магията на даряването. Позволете ни да направим вашия следващ подарък незабравимо преживяване!
+    <br>
+    <br>
+    Нека започнем, като отидем при самите подаръци от тук: <a asp-area="" asp-controller="Presents" asp-action="Index"><button class="button">Подаръци</button></a>
+</div>
+<br>
+<hr>
+<br>
+<h1 id="aboutUs" style="text-align: center">За нас</h1>
+<br>
+<div style="display: flex; flex-direction: row">
+    <div>
+        <img class="imageUs" src="~/aboutus.jpg" />
+    </div>
+    <div style="margin-left: 30px" class="text">
+        <br>
+        Ние вярваме, че всяко събитие, всеки специален момент или просто един обикновен ден, заслужават уникален и внимателно избран подарък. 
+        Затова сме тук - за да ви помогнем да откриете нещото, което ще накара сърцето на вашите близки да зарадва и да заблести.
+        <br>
+        <br>
+        С нашата грижа за детайлите, сме създали внимателно подбрани колекции, които обхващат различни вкусове и интереси. 
+        От класически до модерни, от забавни до практични, ние имаме нещо за всекиго.
+    </div>
 </div>

@@ -46,14 +46,26 @@
         background-color: lightskyblue;
         transition: all 0.2s ease-out;
     }
-    
     .buttonEdit:hover 
     {
         background-color: deepskyblue;
         color: white;
         transition: all 0.2s ease-out;
     }
+    #image 
+    {
+        margin-left: 425px;
+        margin-top: 40px;
+        position: absolute;
+        border-radius: 8px;
+        box-shadow: 2px 2px 2px 1px;
+        width: 140px;
+        height: 135px;
+        color: black;
+    }
 </style>
+
+<body onload="changeImage()"></body>
 
 <br>
 <h1 style="text-align: center">Промяна на подарък</h1>
@@ -85,14 +97,15 @@
                 <select asp-for="ApliedsId" class="form-control" asp-items="ViewBag.ApliedsId"></select>
                 <span asp-validation-for="ApliedsId" class="text-danger"></span>
             </div>
+            <img id="image"/>
             <div class="form-group">
                 <label asp-for="Description" class="control-label">Описание</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label">Снимка</label>
-                <input asp-for="Image" class="form-control" />
+                <label asp-for="Image" class="control-label">Снимка (Url)</label>
+                <input oninput="changeImage()" id="imageText" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -110,6 +123,15 @@
 </div>
 <br>
 <br>
+
+<script>
+    function changeImage() 
+    {
+        var i = document.getElementById('image');
+        var it = document.getElementById('imageText');
+        i.src = it.value;
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

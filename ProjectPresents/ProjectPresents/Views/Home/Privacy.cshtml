@@ -30,6 +30,30 @@
     #btn
     {
         width: 180px;
+        height: 60px;
+        font-size: 18px;
+    }
+    .buttonSend {
+        border-radius: 8px;
+        background-color: deepskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonSend:hover {
+        background-color: dodgerblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+    .buttonClear 
+    {
+        border-radius: 8px;
+        background-color: red;
+        transition: all 0.2s ease-out;
+    }
+    .buttonClear:hover 
+    {
+        transition: all 0.2s ease-out;
+        color: white;
+        background-color: #CE0000;
     }
 </style>
 
@@ -64,8 +88,8 @@
             </div>
             <br>
             <div style="display: flex; justify-content: space-around">
-                <button id="btn" class="btn btn-lg btn-danger" type="reset">Изчисти</button>
-                <button id="btn" class="btn btn-lg btn-primary" type="submit">Изпрати</button>
+                <button id="btn" class="buttonClear" type="reset">Изчисти</button>
+                <button id="btn" class="buttonSend" type="submit">Изпрати</button>
             </div>
         </form>
         <br>

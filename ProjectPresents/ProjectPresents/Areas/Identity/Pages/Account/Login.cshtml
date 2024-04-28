@@ -36,6 +36,25 @@
     {
         width: 400px;
     }
+    .links
+    {
+        text-decoration: none;
+    }
+    .buttonlogin
+    {
+        width: 380px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: deepskyblue;
+        transition: all 0.2s ease-out;
+        font-size: 20px;
+    }
+    .buttonlogin:hover 
+    {
+        background-color: dodgerblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
 </style>
 
 <br>
@@ -75,15 +94,15 @@
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Забравена парола?</a>
+                        <a id="forgot-password" class="links" asp-page="./ForgotPassword">Забравена парола?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Регистрация</a>
+                        <a asp-page="./Register" class="links" asp-route-returnUrl="@Model.ReturnUrl">Нямаш профил?</a>
                     </p>
                 </div>
                 <br>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Вход</button>
+                    <button id="login-submit" type="submit" class="buttonlogin">Вход</button>
                 </div>
             </form>
     </div>
