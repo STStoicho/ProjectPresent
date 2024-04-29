@@ -8,6 +8,31 @@
         font-family: 'Comic Sans MS';
         background: linear-gradient(180deg, rgba(255,255,255,1) 0%, #FFCE9A 100%);
     }
+    .imageGalleryMain
+    {
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 630px;
+        height: 555px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+    .imageGallery
+    {
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 200px;
+        height: 185px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+    .imageGallery:hover
+    {
+        width: 220px;
+        height: 205px;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+    }
     .image 
     {
         border-radius: 8px;
@@ -44,7 +69,13 @@
         color: white;
         transition: all 0.2s ease-out;
     }
+    #gallery
+    {
+        height: 780px;
+    }
 </style>
+
+<body onload="ChangePic1()"></body>
 
 <br>
 <h1 style="text-align: center">Добре дошли в магазина за подаръци "Изненада"</h1>
@@ -84,3 +115,65 @@
         От класически до модерни, от забавни до практични, ние имаме нещо за всекиго.
     </div>
 </div>
+<br>
+<hr>
+<br>
+<h1 id="aboutUs" style="text-align: center">Галерия</h1>
+<br>
+<div id="gallery">
+    <br>
+    <div style="display: flex; justify-content: center">
+        <img class="imageGalleryMain" id="g" src="" />
+    </div>
+    <br>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly">
+        <img onclick="ChangePic1()" id="g1" class="imageGallery" src="~/gallery1.jpg" />
+        <img onclick="ChangePic2()" id="g2" class="imageGallery" src="~/gallery2.jpg" />
+        <img onclick="ChangePic3()" id="g3" class="imageGallery" src="~/gallery3.jpg" />
+        <img onclick="ChangePic4()" id="g4" class="imageGallery" src="~/gallery4.jpg" />
+        <img onclick="ChangePic5()" id="g5" class="imageGallery" src="~/gallery5.jpg" />
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+    function ChangePic1() 
+    {
+        var g = document.getElementById('g');
+        var g1 = document.getElementById('g1');
+
+        g.src = g1.src;
+
+    }
+    function ChangePic2() 
+    {
+        var g = document.getElementById('g');
+        var g2 = document.getElementById('g2');
+
+        g.src = g2.src;
+    }
+    function ChangePic3() 
+    {
+        var g = document.getElementById('g');
+        var g3 = document.getElementById('g3');
+
+        g.src = g3.src;
+    }
+    function ChangePic4() 
+    {
+        var g = document.getElementById('g');
+        var g4 = document.getElementById('g4');
+
+        g.src = g4.src;
+    }
+    function ChangePic5() 
+    {
+        var g = document.getElementById('g');
+        var g5 = document.getElementById('g5');
+
+        g.src = g5.src;
+    }
+</script>
