@@ -4,38 +4,112 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    body 
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, gold 100%);
+        font-family: 'Comic Sans MS';
+    }
+    #buttonCreate 
+    {
+        width: 130px;
+        height: 55px;
+        border-radius: 8px;
+        transition: all 0.2s ease-out;
+    }
+    #buttonCreate:hover 
+    {
+        transition: all 0.2s ease-out;
+        background-color: lightgray;
+    }
+    .apliedText 
+    {
+        margin-left: 20px;
+        width: 250px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .aplied
+    {
+        background-color: gold;
+        border-radius: 12px;
+        font-size: 18px;
+        display: inline-flex;
+        box-shadow: 3px 3px 3px 1px;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        height: 200px;
+        width: 400px;
+        margin-right: 25px;
+        margin-bottom: 20px;
+    }
+    .buttonDel 
+    {
+        margin: 6px;
+        width: 180px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: red;
+        transition: all 0.2s ease-out;
+    }
+    .buttonDel:hover 
+    {
+        transition: all 0.2s ease-out;
+        color: white;
+        background-color: #CE0000;
+    }
+    .buttonEdit 
+    {
+        margin: 6px;
+        width: 180px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonEdit:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+</style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateUpdate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+<br>
+<h1 style="text-align: center">Приложения</h1>
+
+<a asp-action="Create">
+    <button id="buttonCreate">Създай новo</button>
+</a>
+
+<br>
+<br>
+
+@foreach (var item in Model)
+{
+    <div class="aplied">
+        <div class="apliedText">
+            <div style="display: flex; flex-direction: column">
+                <b>Име</b>
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
+            </div>
+            <br>
+            <div style="display: flex; flex-direction: column">
+                <b>Дата</b>
                 @Html.DisplayFor(modelItem => item.DateUpdate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <a asp-action="Edit" asp-route-id="@item.Id">
+                <button class="buttonEdit">Промени</button>
+            </a>
+            <a asp-action="Delete" asp-route-id="@item.Id">
+                <button class="buttonDel">Премахни</button>
+            </a>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+<br>
+<br>

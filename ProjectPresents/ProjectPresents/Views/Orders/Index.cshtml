@@ -19,10 +19,13 @@
         border-radius: 12px;
         font-size: 18px;
         box-shadow: 3px 3px 3px 1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
-    #image {
+    #image 
+    {
         margin: 15px;
-        float: left;
         border-radius: 8px;
         box-shadow: 3px 3px 3px 1px;
         width: 190px;
@@ -31,11 +34,9 @@
     }
     .buttonDel 
     {
-        margin: 6px;
+        margin: 10px;
         width: 180px;
         height: 80px;
-        float: right;
-        margin-top: 65px;
         border-radius: 8px;
         background-color: red;
         transition: all 0.2s ease-out;
@@ -46,11 +47,30 @@
         color: white;
         background-color: #CE0000;
     }
+    .buttonEdit
+    {
+        margin: 10px;
+        width: 180px;
+        height: 80px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonEdit:hover 
+    {
+        transition: all 0.2s ease-out;
+        color: white;
+        background-color: deepskyblue;
+    }
     .presentText
     {
-        margin-left: 20px;
-        float: left;
+        margin-left: 10px;
+        width: 820px;
+        margin-top: 80px;
         font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 </style>
 
@@ -58,50 +78,43 @@
 <br>
 
 @foreach (var item in Model) {
+
     <div class="presents">
-        <tr>
-            <td>
-                <img id="image" src="@Html.DisplayFor(modelItem => item.Presents.Image)" />
-            </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">
-                    <button class="buttonDel">Премахни</button>
-                </a>
-                <br>
-                <br>
-                <br>
-                <div class="presentText">
-                    <b>Име</b>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.Presents.Name)
-                </div>
-                <div class="presentText">
-                    <b>Username</b>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.Clietns.UserName)
-                </div>
-                <div class="presentText">
-                    <b>Количество</b>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </div>
-                <div class="presentText">
-                    <b>Дата</b>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.DateUpdate)
-                </div>
-                <div class="presentText">
-                    <b>Обща цена</b>
-                    <br>
-                    @(item.Presents.Price * item.Quantity) лв.
-                </div>
-            </td>
-        </tr>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div>
+            <img id="image" src="@Html.DisplayFor(modelItem => item.Presents.Image)" />
+        </div>
+        <div class="presentText">
+            <div style="display: flex; flex-direction: column">
+                <b>Име</b>
+                @Html.DisplayFor(modelItem => item.Presents.Name)
+            </div>
+            <div style="display: flex; flex-direction: column">
+                <b>Username</b>
+                @Html.DisplayFor(modelItem => item.Clietns.UserName)
+            </div>
+            <div style="display: flex; flex-direction: column">
+                <b>Количество</b>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </div>
+            <div style="display: flex; flex-direction: column">
+                <b>Дата</b>
+                @Html.DisplayFor(modelItem => item.DateUpdate)
+            </div>
+            <div style="display: flex; flex-direction: column">
+                <b>Обща цена</b>
+                @(item.Presents.Price * item.Quantity) лв.
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <a asp-action="Edit" asp-route-id="@item.Id">
+                <button class="buttonEdit">Промени</button>
+            </a>
+            <a asp-action="Delete" asp-route-id="@item.Id">
+                <button class="buttonDel">Премахни</button>
+            </a>
+        </div>
     </div>
     <br>
 }
+<br>
+<br>

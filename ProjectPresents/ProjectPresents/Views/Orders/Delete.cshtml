@@ -4,42 +4,151 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<style>
+    body 
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(151,232,255,1) 100%);
+        font-family: 'Comic Sans MS';
+    }
+    #image 
+    {
+        margin-left: 200px;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 350px;
+        height: 350px;
+        color: black;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Clietns)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Clietns.UserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Presents)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Presents.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateUpdate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateUpdate)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    @@media screen and (max-width: 980px) 
+    {
+        #image 
+        {
+            margin-left: 0px;
+        }
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        #image
+        {
+            width: 540px;
+            margin-left: 0px;
+            height: 535px;
+        }
+    }
+
+    .orderText 
+    {
+        font-size: 27px;
+        margin-top: 70px;
+        margin-left: 35px;
+        width: 400px;
+    }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        .orderText 
+        {
+            font-size: 22px;
+        }
+    }
+
+    @@media screen and (max-width: 1100px)
+    {
+        .orderText
+        {
+            width: 300px;
+        }
+    }
+
+    @@media screen and (max-width: 770px)
+    {
+        .orderText
+        {
+            margin-top: 25px;
+        }
+    }
+    .buttonBack 
+    {
+        width: 200px;
+        height: 85px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonBack:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+    .buttonDel 
+    {
+        width: 200px;
+        height: 85px;
+        border-radius: 8px;
+        background-color: red;
+        transition: all 0.2s ease-out;
+        font-size: 20px;
+    }
+    .buttonDel:hover 
+    {
+        transition: all 0.2s ease-out;
+        color: white;
+        background-color: #CE0000;
+    }
+
+    .everything 
+    {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+    }
+
+    @@media screen and (max-width: 770px) 
+    {
+        .everything 
+        {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">Премахване на поръчка</h1>
+<h4 style="text-align: center">Сигурни ли сте, че искате да премахнете тази поръчка?</h4>
+
+<br>
+<br>
+
+<div class="everything">
+    <div>
+        <img id="image" src="@Html.DisplayFor(model => model.Presents.Image)" />
+    </div>
+    <div class="orderText">
+        <b>Име: </b>@Html.DisplayFor(model => model.Presents.Name)
+        <br>
+        <b>Username: </b>@Html.DisplayFor(model => model.Clietns.UserName)
+        <br>
+        <b>Количество: </b>@Html.DisplayFor(model => model.Quantity)
+        <br>
+        <b>Дата: </b>@Html.DisplayFor(model => model.DateUpdate)
+    </div>
 </div>
+<br>
+<br>
+<div style="display: flex; flex-direction: row; justify-content: space-evenly; ">
+    <div>
+        <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
+    </div>
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Премахване" class="buttonDel" />
+        </form>
+    </div>
+</div>
+<br>
+<br>

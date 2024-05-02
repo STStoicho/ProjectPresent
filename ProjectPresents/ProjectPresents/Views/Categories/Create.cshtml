@@ -4,29 +4,78 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    body 
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, lightgreen 100%);
+        font-family: 'Comic Sans MS';
+    }
+    .buttonBack 
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonBack:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
 
-<h4>Category</h4>
-<hr />
+    .buttonCreate 
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonCreate:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+    .row 
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-control 
+    {
+        border-radius: 6px;
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">Създаване на нова категория</h1>
+<br>
+<br>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Име</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <br>
+            <br>
+            <div style="display: flex; justify-content: space-between">
+                <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
+                <input type="submit" value="Създаване" class="buttonCreate" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<br>
+<br>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

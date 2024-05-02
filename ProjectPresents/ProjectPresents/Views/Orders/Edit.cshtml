@@ -4,36 +4,82 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    body 
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(151,232,255,1) 100%);
+        font-family: 'Comic Sans MS';
+    }
+    .form-control 
+    {
+        border-radius: 6px;
+    }
+    .row 
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .buttonBack 
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonBack:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+    .buttonEdit 
+    {
+        width: 180px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: lightskyblue;
+        transition: all 0.2s ease-out;
+    }
+    .buttonEdit:hover 
+    {
+        background-color: deepskyblue;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+</style>
 
-<h4>Order</h4>
-<hr />
+<br>
+<h1 style="text-align: center">Промяна на поръчка</h1>
+<br>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            
-            <div class="form-group">
+            <div hidden="hidden" class="form-group">
                 <label asp-for="PresentsId" class="control-label"></label>
                 <select asp-for="PresentsId" class="form-control" asp-items="ViewBag.PresentsId"></select>
                 <span asp-validation-for="PresentsId" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
+                <label asp-for="Quantity" class="control-label">Количество</label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <br>
+            <br>
+            <div style="display: flex; justify-content: space-between">
+                <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
+                <input type="submit" value="Промени" class="buttonEdit" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<br>
+<br>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
