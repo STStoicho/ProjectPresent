@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Промоции";
+}
+
+<style>
+    body
+    {
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, lightcoral 100%);
+        font-family: 'Comic Sans MS';
+    }
+    .promotions
+    {
+        background-color: lightcoral;
+        border-radius: 12px;
+        font-size: 18px;
+        box-shadow: 3px 3px 3px 1px;
+        height: 580px;
+        width: 400px;
+        transition: all 0.2s ease-out;
+        margin-right: 25px;
+        margin-bottom: 20px;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .promotionsText
+    {
+        margin-left: 35px;
+        margin-top: 10px;
+        font-size: 22px;
+        transition: all 0.2s ease-out;
+    }
+    #image
+    {
+        margin: 15px;
+        margin-left: 28px;
+        float: left;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 1px;
+        width: 340px; 
+        height: 335px;
+        transition: all 0.2s ease-out;
+        color: black;
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">Промоции</h1>
+<br>
+<br>
+
+<div id="allpromos">
+    <div class="promotions">
+        <div>
+            <h3 style="text-align: center; margin-top: 15px;">Светеща стъклена топка</h3>
+        </div>
+        <div>
+            <img style="position: absolute; width: 350px; height: 125px; margin-left: 23px" src="~/ribbonnew.png" />
+            <h4 style="position: absolute; color: lightcoral; margin-left: 265px; margin-top: 25px">-50%</h4>
+        </div>
+        <div>
+            <img id="image" src="~/promo1.jpg" />
+        </div>
+        <div class="promotionsText">
+            <hr style="color: black; opacity: 0.8; width: 100px; height: 4px; position: absolute; margin-left: 70px">
+            <b>Цена: </b>31.99 лв.
+        </div>
+        <div class="promotionsText">
+            <b>Нова цена: </b>16.00 лв.
+            
+        </div>
+    </div>
+
+    <div class="promotions">
+        <div>
+            <h3 style="text-align: center; margin-top: 15px;">Кожена гривна</h3>
+        </div>
+        <div>
+            <img style="position: absolute; width: 350px; height: 125px; margin-left: 23px" src="~/ribbonnew.png" />
+            <h4 style="position: absolute; color: lightcoral; margin-left: 265px; margin-top: 25px">-35%</h4>
+        </div>
+        <div>
+            <img id="image" src="~/promo2.jpeg" />
+        </div>
+        <div class="promotionsText">
+            <hr style="color: black; opacity: 0.8; width: 100px; height: 4px; position: absolute; margin-left: 70px">
+            <b>Цена: </b>28.50 лв.
+        </div>
+        <div class="promotionsText">
+            <b>Нова цена: </b>18.53 лв.
+
+        </div>
+    </div>
+
+    <div class="promotions">
+        <div>
+            <h3 style="text-align: center; margin-top: 15px;">Цветя от вълна</h3>
+        </div>
+        <div>
+            <img style="position: absolute; width: 350px; height: 125px; margin-left: 23px" src="~/ribbonnew.png" />
+            <h4 style="position: absolute; color: lightcoral; margin-left: 265px; margin-top: 25px">-45%</h4>
+        </div>
+        <div>
+            <img id="image" src="~/promo3.jpeg" />
+        </div>
+        <div class="promotionsText">
+            <hr style="color: black; opacity: 0.8; width: 100px; height: 4px; position: absolute; margin-left: 70px">
+            <b>Цена: </b>12.99 лв.
+        </div>
+        <div class="promotionsText">
+            <b>Нова цена: </b>7.14 лв.
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>

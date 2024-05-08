@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProjectPresents.Data.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Поръчки";
 }
 
 <br>
@@ -13,7 +13,7 @@
         background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(151,232,255,1) 100%);
         font-family: 'Comic Sans MS';
     }
-    .presents 
+    .order 
     {
         background-color: #46B6E0;
         border-radius: 12px;
@@ -23,6 +23,17 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+    @@media screen and (max-width: 990px) 
+    {
+        .order 
+        {
+            height: 380px;
+            width: 750px;
+            justify-content: normal;
+        }
+    }
+
     #image 
     {
         margin: 15px;
@@ -62,7 +73,7 @@
         color: white;
         background-color: deepskyblue;
     }
-    .presentText
+    .orderText
     {
         margin-left: 10px;
         width: 820px;
@@ -72,6 +83,44 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+    @@media screen and (max-width: 990px) 
+    {
+        .orderText
+        {
+            position: absolute;
+            width: 720px;
+            margin-left: 20px;
+            margin-top: 225px;
+        }
+    }
+
+    .direction
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #buttons
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @@media screen and (max-width: 990px) 
+    {
+        #buttons
+        {
+            display: inline;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        a
+        {
+            text-decoration: none;
+        }
+    }
 </style>
 
 <br>
@@ -79,33 +128,33 @@
 
 @foreach (var item in Model) {
 
-    <div class="presents">
+    <div class="order">
         <div>
             <img id="image" src="@Html.DisplayFor(modelItem => item.Presents.Image)" />
         </div>
-        <div class="presentText">
-            <div style="display: flex; flex-direction: column">
+        <div class="orderText">
+            <div class="direction">
                 <b>Име</b>
                 @Html.DisplayFor(modelItem => item.Presents.Name)
             </div>
-            <div style="display: flex; flex-direction: column">
+            <div class="direction">
                 <b>Username</b>
                 @Html.DisplayFor(modelItem => item.Clietns.UserName)
             </div>
-            <div style="display: flex; flex-direction: column">
+            <div class="direction">
                 <b>Количество</b>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </div>
-            <div style="display: flex; flex-direction: column">
+            <div class="direction">
                 <b>Дата</b>
                 @Html.DisplayFor(modelItem => item.DateUpdate)
             </div>
-            <div style="display: flex; flex-direction: column">
+            <div class="direction">
                 <b>Обща цена</b>
                 @(item.Presents.Price * item.Quantity) лв.
             </div>
         </div>
-        <div style="display: flex; flex-direction: column">
+        <div id="buttons">
             <a asp-action="Edit" asp-route-id="@item.Id">
                 <button class="buttonEdit">Промени</button>
             </a>

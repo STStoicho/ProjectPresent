@@ -23,6 +23,11 @@ namespace ProjectPresents.Controllers
             return View();
         }
 
+        public IActionResult Promotions()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

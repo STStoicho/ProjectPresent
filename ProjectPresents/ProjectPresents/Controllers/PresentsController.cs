@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,7 @@ namespace ProjectPresents.Controllers
         }
 
         // GET: Presents/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["ApliedsId"] = new SelectList(_context.Aplieds, "Id", "Name");
@@ -88,6 +90,7 @@ namespace ProjectPresents.Controllers
         }
 
         // GET: Presents/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -145,6 +148,7 @@ namespace ProjectPresents.Controllers
         }
 
         // GET: Presents/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

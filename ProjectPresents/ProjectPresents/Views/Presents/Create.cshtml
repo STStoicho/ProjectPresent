@@ -1,7 +1,7 @@
 ﻿@model ProjectPresents.Data.Present
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Създаване на подарък";
 }
 
 <style>
@@ -62,7 +62,59 @@
         box-shadow: 2px 2px 2px 1px;
         width: 140px;
         height: 135px;
+        transition: all 0.2s ease-out;
         color: black;
+    }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        #image 
+        {
+            margin-left: 325px;
+            margin-top: 40px;
+        }
+    }
+
+    @@media screen and (max-width: 974px) 
+    {
+        #image 
+        {
+            margin-left: 225px;
+            margin-top: 40px;
+        }
+    }
+    @@media screen and (max-width: 770px) 
+    {
+        #image 
+        {
+            margin-left: 190px;
+            margin-top: 190px;
+        }
+    }
+
+    #buttons
+    {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    @@media screen and (max-width: 1200px) 
+    {
+        #buttons 
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    @@media screen and (max-width: 770px) 
+    {
+        #buttons 
+        {
+            display: flex;
+            flex-direction: row;
+        }
     }
 </style>
 
@@ -110,7 +162,7 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <br>
-            <div style="display: flex; justify-content: space-between">
+            <div id="buttons">
                 <a asp-action="Index"><input type="button" value="Предишна страница" class="buttonBack" /></a>
                 <input type="submit" value="Създаване" class="buttonCreate" />
             </div>

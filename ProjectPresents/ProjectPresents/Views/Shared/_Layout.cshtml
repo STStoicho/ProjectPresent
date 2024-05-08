@@ -36,18 +36,6 @@
         transition: all 0.1s ease-out;
     }
 
-    #textchange
-    {
-    }
-
-    @@media screen and (max-width: 1410px) 
-    {
-        #textchange 
-        {
-            font-size: 12px;
-        }
-    }
-
     .menubox
     {
         background-color: white;
@@ -134,21 +122,21 @@
                             </div>
                         </li>
                         <li class="menubox">
-                            <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Обратна връзка</a>
+                            <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Promotions">Промоции</a>
                         </li>
                         <li class="menubox">
-                            <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Presents" asp-action="Index">Подаръци</a>
+                            <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Обратна връзка</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="menubox">
-                                <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Категории</a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="menubox">
-                                <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Aplieds" asp-action="Index">Приложения</a>
+                            <li>
+                                <div class="dropdown">
+                                    <button id="textchange" class="dropbtn"><img src="~/admin.png" width="25px" /> Админ</button>
+                                    <div class="dropdown-content">
+                                        <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Категории</a>
+                                        <a id="textchange" class="nav-link text-dark" asp-area="" asp-controller="Aplieds" asp-action="Index">Приложения</a>
+                                    </div>
+                                </div>
                             </li>
                         }
                     </ul>

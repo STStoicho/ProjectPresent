@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProjectPresents.Data.Category>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Категории";
 }
 
 <style>
@@ -22,7 +22,7 @@
         transition: all 0.2s ease-out;
         background-color: lightgray;
     }
-    .presentText 
+    .categoryText 
     {
         margin-left: 20px;
         width: 250px;
@@ -35,7 +35,6 @@
         background-color: limegreen;
         border-radius: 12px;
         font-size: 18px;
-        display: inline-flex;
         box-shadow: 3px 3px 3px 1px;
         display: inline-flex;
         flex-direction: row;
@@ -90,7 +89,7 @@
 
 @foreach (var item in Model) {
     <div class="category">
-        <div class="presentText">
+        <div class="categoryText">
             <div style="display: flex; flex-direction: column">
                 <b>Име</b>
                 @Html.DisplayFor(modelItem => item.Name)
