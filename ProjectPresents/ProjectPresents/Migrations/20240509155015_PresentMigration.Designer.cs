@@ -12,7 +12,7 @@ using ProjectPresents.Data;
 namespace ProjectPresents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240409182511_PresentMigration")]
+    [Migration("20240509155015_PresentMigration")]
     partial class PresentMigration
     {
         /// <inheritdoc />
